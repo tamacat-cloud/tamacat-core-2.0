@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<beans>
+	<bean id="data" class="cloud.tamacat.hoge.Data" />
+	<bean id="test" class="cloud.tamacat.hoge.Fuga">
+		<property name="aaa">
+			<value>bbb</value>
+		</property>
+		<property>
+			<ref bean="data" />
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+	<bean id="Core" class="cloud.tamacat.di.test.SampleCore">
+		<property name="coreName">
+			<value>Test</value>
+		</property>
+	</bean>
+
+	<bean id="Core2" class="cloud.tamacat.di.test.SampleCore" scope="prototype">
+	</bean>
+
+	<!-- ref bean test -->
+	<bean id="Core3" class="cloud.tamacat.di.test.SampleCore" scope="protptype">
+		<property name="core">
+			<ref bean="Core2" />
+		</property>
+		<property name="coreName">
+			<value>CoreName</value>
+		</property>
+	</bean>
+
+	<bean id="Singleton" class="cloud.tamacat.di.test.Singleton" facttory-method="getInstance" scope="prototype" />
+	<bean id="Factory" class="cloud.tamacat.di.test.CoreFactory" facttory-method="createCore" scope="prototype" />
+
+</beans>

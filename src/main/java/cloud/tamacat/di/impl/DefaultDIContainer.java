@@ -17,7 +17,7 @@ import cloud.tamacat.util.ClassUtils;
 
 public class DefaultDIContainer implements DIContainer {
 
-	static final String PROPERTIES_FILE = "org.tamacat.di.DIContainer.properties";
+	static final String PROPERTIES_FILE = "cloud.tamacat.di.DIContainer.properties";
 	static final String BEAN_DEFINE_HANDLER_KEY = "DIContainerBeanDefineHandler";
 
 	protected BeanCreator creator;

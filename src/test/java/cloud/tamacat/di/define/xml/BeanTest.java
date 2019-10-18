@@ -35,9 +35,9 @@ public class BeanTest {
 		StringWriter writer = new StringWriter();
 		JAXB.marshal(bean, writer);
 		String xml = writer.toString();
-		//System.out.println(xml);
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n"
-			+ "<bean class=\"cloud.tamacat.test.Data\" id=\"test\"/>\n", xml);
+		System.out.println(xml);
+		assertEquals("<?xml version=1.0 encoding=UTF-8 standalone=yes?>"
+			+ "<bean id=test class=cloud.tamacat.test.Data/>", xml.replace("\n","").replace("\"", ""));
 	}
 
 	@Test

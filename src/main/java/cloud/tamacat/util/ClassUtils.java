@@ -44,7 +44,7 @@ public abstract class ClassUtils {
 
 	public static <T> T newInstance(Class<T> type) {
 		try {
-			//return type.newInstance(); //@Deprecated(since="9")
+		    //return type.newInstance(); //@Deprecated(since="9")
 			return type.getDeclaredConstructor().newInstance();
 		} catch (Exception e) {
 			return null; // throw new ClassUtilsException(e);

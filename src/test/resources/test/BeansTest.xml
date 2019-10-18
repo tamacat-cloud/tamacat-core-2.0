@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <beans>
-	<bean class="cloud.tamacat.hoge.Data" id="data" />
-	<bean class="cloud.tamacat.hoge.Fuga" id="test">
+	<bean id="data" class="cloud.tamacat.hoge.Data"/>
+	<bean id="test" class="cloud.tamacat.hoge.Fuga">
 		<property name="aaa">
 			<value>bbb</value>
 		</property>

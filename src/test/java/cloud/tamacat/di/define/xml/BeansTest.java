@@ -53,7 +53,7 @@ public class BeansTest {
 		marshaller.marshal(beans, writer);
 		String xml = writer.toString();
 		String org = new String(Files.readAllBytes(Paths.get("src/test/resources/test/BeansTest.xml")),"UTF-8");
-		//System.out.println(xml);
+		System.out.println(xml);
 
 		assertEquals(org.replace("\t","").replace(" ","").replace("\r","").replace("\n",""),
 			xml.replace("\t","").replace(" ",""));

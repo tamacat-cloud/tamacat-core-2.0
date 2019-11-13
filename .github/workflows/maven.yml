@@ -14,5 +14,6 @@ jobs:
       with:
         java-version: 1.11
     - name: Build with Maven
-      #run: mvn -B package --file pom.xml
+      run: mvn -B package --file pom.xml
+    - name: Deploy
       run: mvn deploy -Dregistry=https://maven.pkg.github.com/tamacat -Dtoken=GH_TOKEN

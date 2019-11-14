@@ -228,7 +228,15 @@
       </plugin>
     </plugins>
   </reporting>
-
+  
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>github</name>
+      <url>https://maven.pkg.github.com/tamacat</url>
+    </repository>
+  </distributionManagement>
+  
   <repositories>
     <repository>
       <id>tamacat.org</id>

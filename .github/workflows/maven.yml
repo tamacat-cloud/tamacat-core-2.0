@@ -14,6 +14,9 @@ jobs:
       with:
         java-version: 1.11
     - name: Build with Maven
+      env:
+        SECRET_VARIABLE: ${{ secrets.SECRET_VARIABLE }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: mvn -B package --file pom.xml
     - name: Deploy
-      run: mvn deploy -Dregistry=https://maven.pkg.github.com/tamacat -Dtoken=GH_TOKEN
+      run: mvn deploy -Dregistry=https://maven.pkg.github.com/tamacat -Dtoken=${GITHUB_TOKEN}

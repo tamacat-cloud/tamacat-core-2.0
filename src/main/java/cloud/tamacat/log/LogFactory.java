@@ -15,6 +15,7 @@ import cloud.tamacat.log.impl.Log4jDiagnosticContext;
 import cloud.tamacat.log.impl.Log4jLogger;
 import cloud.tamacat.log.impl.NoneDiagnosticContext;
 import cloud.tamacat.log.impl.SimpleLogger;
+import cloud.tamacat.log.impl.Slf4jDiagnosticContext;
 import cloud.tamacat.log.impl.Slf4jLogger;
 import cloud.tamacat.util.ClassUtils;
 import cloud.tamacat.util.PropertyUtils;
@@ -77,7 +78,7 @@ public class LogFactory {
 		if (slf4jClass != null) {
 			return new Slf4jLogger(name);
 		}
-		Class<?> log4j2Class = ClassUtils.forName(LOG4J_CLASS, loader);
+		Class<?> log4j2Class = ClassUtils.forName(LOG4J2_CLASS, loader);
 		if (log4j2Class != null) {
 			return new Log4j2Logger(name);
 		}
@@ -89,7 +90,9 @@ public class LogFactory {
 	}
 
 	public static DiagnosticContext getDiagnosticContext(Log logger) {
-		if (logger instanceof Log4j2Logger) {
+		if (logger instanceof Slf4jLogger) {
+            return new Slf4jDiagnosticContext();
+		} else if (logger instanceof Log4j2Logger) {
 			return new Log4j2DiagnosticContext();
 		} else if (logger instanceof Log4jLogger) {
 			return new Log4jDiagnosticContext();

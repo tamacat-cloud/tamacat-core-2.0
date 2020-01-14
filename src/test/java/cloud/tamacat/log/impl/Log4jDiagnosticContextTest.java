@@ -34,7 +34,7 @@ public class Log4jDiagnosticContextTest {
 	public void testSetNestedContext() {
 		context.setNestedContext("value1");
 		context.setNestedContext("value2");
-		assertEquals("value1 value2", context.get());
+		assertEquals("value2", context.get());
 	}
 
 	@Test
@@ -42,7 +42,7 @@ public class Log4jDiagnosticContextTest {
 		context.setNestedContext("value1");
 		context.setNestedContext("value2");
 		context.remove();
-		assertEquals(null, context.get());
+		assertEquals("", context.get());
 	}
 
 	@Test

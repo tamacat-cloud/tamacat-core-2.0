@@ -55,7 +55,7 @@ public class LogFactoryTest {
 		assertTrue(logger.isWarnEnabled());
 		assertTrue(logger.isInfoEnabled());
 		assertTrue(logger.isDebugEnabled());
-		assertTrue(logger.isTraceEnabled());
+		assertFalse(logger.isTraceEnabled());
 	}
 
 	@Test

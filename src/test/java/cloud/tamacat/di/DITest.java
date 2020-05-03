@@ -3,11 +3,11 @@
  */
 package cloud.tamacat.di;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import cloud.tamacat.di.DI;
 import cloud.tamacat.di.DIContainer;
@@ -19,11 +19,11 @@ import cloud.tamacat.util.ClassUtils;
 
 public class DITest {
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() throws Exception {
 	}
 

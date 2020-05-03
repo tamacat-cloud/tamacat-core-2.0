@@ -4,19 +4,19 @@
  */
 package cloud.tamacat.log.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import junit.framework.TestCase;
-
-import org.junit.Test;
-
 import cloud.tamacat.log.impl.Log4jLogger;
 import cloud.tamacat.util.IOUtils;
 
-public class Log4jLoggerSerializeTest extends TestCase {
+public class Log4jLoggerSerializeTest {
 	
 	@Test
 	public void testSerialize() {

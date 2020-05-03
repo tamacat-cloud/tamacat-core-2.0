@@ -3,10 +3,10 @@
  */
 package cloud.tamacat.di.define;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import cloud.tamacat.di.define.BeanAdapter;
 
@@ -15,7 +15,7 @@ public class BeanAdapterTest {
 	BeanAdapter<String> adapter;
 	String instance = new String("tama");
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		adapter = new BeanAdapter<String>("id", String.class, instance);
 	}

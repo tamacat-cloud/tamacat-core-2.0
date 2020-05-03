@@ -15,10 +15,10 @@
  */
 package cloud.tamacat.log.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import cloud.tamacat.log.LogFactory;
 import cloud.tamacat.log.impl.Log4jLogger;
@@ -27,7 +27,7 @@ public class Log4jLoggerTest {
 
     Log4jLogger logger;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         logger = new Log4jLogger("TEST");
     }

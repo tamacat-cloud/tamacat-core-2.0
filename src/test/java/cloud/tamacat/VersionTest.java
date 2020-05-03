@@ -3,16 +3,16 @@
  */
 package cloud.tamacat;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import cloud.tamacat.Version;
 
 public class VersionTest {
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 	}
 

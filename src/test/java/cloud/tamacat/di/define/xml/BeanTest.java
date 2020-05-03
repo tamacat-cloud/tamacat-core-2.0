@@ -3,7 +3,10 @@
  */
 package cloud.tamacat.di.define.xml;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.StringWriter;
@@ -12,16 +15,13 @@ import java.util.List;
 
 import javax.xml.bind.JAXB;
 
-import org.junit.Before;
-import org.junit.Test;
-
 import cloud.tamacat.di.define.xml.Bean;
 import cloud.tamacat.di.define.xml.ConstructorArg;
 import cloud.tamacat.di.define.xml.Prop;
 
 public class BeanTest {
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 
 	}

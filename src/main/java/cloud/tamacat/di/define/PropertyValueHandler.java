@@ -6,6 +6,7 @@ package cloud.tamacat.di.define;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.Map;
 
 import cloud.tamacat.di.define.BeanDefineParam;
 import cloud.tamacat.util.ClassUtils;
@@ -13,11 +14,13 @@ import cloud.tamacat.util.StringUtils;
 
 public class PropertyValueHandler {
 
-	static private final HashMap<Class<?>, StringValueConverter<?>> CONVERTERS = new HashMap<>();
+	static final HashMap<Class<?>, StringValueConverter<?>> CONVERTERS = new HashMap<>();
 
-	static public final void register(Class<?> type, StringValueConverter<?> converter) {
+	public static final void register(Class<?> type, StringValueConverter<?> converter) {
 		CONVERTERS.put(type, converter);
 	}
+	
+	static final Map<String, String> ENVIRONMENT = new HashMap<>();
 
 	static {
 		register(String.class, new StringConverter());
@@ -33,6 +36,10 @@ public class PropertyValueHandler {
 		register(Object.class, new ObjectConverter());
 	}
 
+	public static final void setEnv(String key, String value) {
+		ENVIRONMENT.put(key, value);
+	}
+	
 	static final class StringConverter implements StringValueConverter<String> {
 		public Class<String> getType() {
 			return String.class;
@@ -198,7 +205,12 @@ public class PropertyValueHandler {
 	static String replaceEnvironmentVariable(String value) {
 		if (StringUtils.isNotEmpty(value) && value.startsWith("${") && value.endsWith("}")) {
 			String key = value.substring(2, value.length()-1);
-			return System.getenv(key);
+			String env = System.getenv(key);
+			if (env != null) {
+				return env;
+			} else {
+				return ENVIRONMENT.get(key);
+			}
 		}
 		return value;
 	}

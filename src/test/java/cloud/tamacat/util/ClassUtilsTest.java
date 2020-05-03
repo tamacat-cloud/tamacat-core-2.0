@@ -3,6 +3,9 @@
  */
 package cloud.tamacat.util;
 
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -11,20 +14,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.junit.Test;
-
 import cloud.tamacat.di.test.Core;
 import cloud.tamacat.di.test.CoreFactory;
 import cloud.tamacat.di.test.SampleCore;
 import cloud.tamacat.util.ClassUtils;
 import cloud.tamacat.util.ResourceNotFoundException;
-import junit.framework.TestCase;
 
-public class ClassUtilsTest extends TestCase {
-
-	protected void setUp() throws Exception {
-		super.setUp();
-	}
+public class ClassUtilsTest {
 
 	@Test
 	public void testGetDefaultClassLoader() {

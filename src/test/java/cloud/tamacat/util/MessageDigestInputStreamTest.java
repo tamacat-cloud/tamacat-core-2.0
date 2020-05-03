@@ -1,14 +1,13 @@
 package cloud.tamacat.util;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 
 import cloud.tamacat.util.IOUtils;
 import cloud.tamacat.util.MessageDigestException;
@@ -18,12 +17,12 @@ public class MessageDigestInputStreamTest {
 
 	ByteArrayInputStream bi;
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		bi = new ByteArrayInputStream("TEST".getBytes());
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() throws Exception {
 		IOUtils.close(bi);
 	}

@@ -1,10 +1,10 @@
 package cloud.tamacat.log.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import cloud.tamacat.log.impl.Log4jDiagnosticContext;
 
@@ -12,12 +12,12 @@ public class Log4jDiagnosticContextTest {
 
 	Log4jDiagnosticContext context;
 	
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {		
 		context = new Log4jDiagnosticContext();
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() throws Exception {
 		//context.remove();
 	}

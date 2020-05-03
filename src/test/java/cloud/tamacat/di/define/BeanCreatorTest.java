@@ -5,8 +5,10 @@ package cloud.tamacat.di.define;
 
 import java.util.Map.Entry;
 
-import static org.junit.Assert.*;
-import org.junit.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import cloud.tamacat.di.define.BeanCreator;
 import cloud.tamacat.di.define.BeanDefine;
@@ -15,9 +17,10 @@ import cloud.tamacat.di.test.Core;
 import cloud.tamacat.di.test.SampleCore;
 
 public class BeanCreatorTest {
+	
 	BeanDefineMap defines = new BeanDefineMap();
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		BeanDefine def = new BeanDefine();
 		def.setId("test");

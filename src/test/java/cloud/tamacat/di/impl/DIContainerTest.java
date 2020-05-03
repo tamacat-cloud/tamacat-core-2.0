@@ -3,9 +3,8 @@
  */
 package cloud.tamacat.di.impl;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 import cloud.tamacat.di.impl.DefaultDIContainer;
 import cloud.tamacat.di.test.CoreFactory;

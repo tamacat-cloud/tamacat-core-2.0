@@ -3,17 +3,17 @@
  */
 package cloud.tamacat.di.define;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import cloud.tamacat.di.define.BeanDefineParam;
 import cloud.tamacat.util.ClassUtils;
 
 public class BeanDefineParamTest {
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 	}
 

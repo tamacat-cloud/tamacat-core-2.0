@@ -1,6 +1,6 @@
 package cloud.tamacat.log.impl;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import cloud.tamacat.log.impl.NoneDiagnosticContext;
 

@@ -27,7 +27,7 @@ public class JsonUtils {
 		if (data.containsKey(key)) {
 			return data.getBoolean(key);
 		}
-		return null;
+		return false;
 	};
 
 	public static BiFunction<JsonObject, String, JsonObject> getObject = (JsonObject data, String key) -> {

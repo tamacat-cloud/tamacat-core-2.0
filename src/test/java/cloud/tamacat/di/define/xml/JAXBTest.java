@@ -3,12 +3,12 @@
  */
 package cloud.tamacat.di.define.xml;
 
+import org.junit.jupiter.api.Test;
+
 import java.io.File;
 import java.io.StringWriter;
 
 import javax.xml.bind.JAXB;
-
-import org.junit.Test;
 
 import cloud.tamacat.di.define.xml.Bean;
 import cloud.tamacat.di.define.xml.Beans;

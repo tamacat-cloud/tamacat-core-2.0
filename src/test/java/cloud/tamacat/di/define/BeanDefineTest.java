@@ -3,11 +3,11 @@
  */
 package cloud.tamacat.di.define;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
 import java.lang.reflect.Method;
-
-import junit.framework.TestCase;
-
-import org.junit.Test;
 
 import cloud.tamacat.di.define.BeanConstructorParam;
 import cloud.tamacat.di.define.BeanDefine;
@@ -16,7 +16,7 @@ import cloud.tamacat.di.test.CoreFactory;
 import cloud.tamacat.di.test.Param;
 import cloud.tamacat.util.ClassUtils;
 
-public class BeanDefineTest extends TestCase {
+public class BeanDefineTest {
 
 	@Test
 	public void testSetType() {

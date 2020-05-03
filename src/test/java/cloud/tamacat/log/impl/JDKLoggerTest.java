@@ -15,10 +15,10 @@
  */
 package cloud.tamacat.log.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import cloud.tamacat.log.impl.JDKLogger;
 
@@ -26,7 +26,7 @@ public class JDKLoggerTest {
 
     JDKLogger logger;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
 		System.setProperty("java.util.logging.config.file", "logging.properties");
 

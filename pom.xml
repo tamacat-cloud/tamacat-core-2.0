@@ -224,7 +224,7 @@
     <repository>
       <id>github</id>
       <name>github</name>
-      <url>https://maven.pkg.github.com/tamacat</url>
+      <url>https://maven.pkg.github.com/tamacat-cloud</url>
     </repository>
   </distributionManagement>
 

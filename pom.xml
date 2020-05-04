@@ -220,6 +220,7 @@
     </plugins>
   </reporting>
 
+  <!--
   <distributionManagement>
     <repository>
       <id>github</id>
@@ -227,6 +228,7 @@
       <url>https://maven.pkg.github.com/tamacat-cloud</url>
     </repository>
   </distributionManagement>
+  -->
 
   <repositories>
     <repository>

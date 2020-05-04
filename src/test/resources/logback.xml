@@ -8,6 +8,7 @@
   <logger name="cloud" level="DEBUG"/>
   <logger name="org" level="DEBUG"/>
   <logger name="com" level="DEBUG"/>
+  <logger name="ch.qos" level="ERROR"/>
 
   <root level="DEBUG">
     <appender-ref ref="STDOUT"/>

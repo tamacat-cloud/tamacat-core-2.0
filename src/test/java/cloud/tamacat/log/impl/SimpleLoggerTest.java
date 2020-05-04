@@ -17,6 +17,10 @@ package cloud.tamacat.log.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,15 +29,23 @@ import cloud.tamacat.log.impl.SimpleLogger;
 public class SimpleLoggerTest {
 
     SimpleLogger logger;
+	ByteArrayOutputStream out;
 
     @BeforeEach
     public void setUp() throws Exception {
-        logger = new SimpleLogger();
+    	out = new ByteArrayOutputStream();
+        logger = new SimpleLogger(new PrintStream(out));
     }
 
+    @AfterEach
+    public void tearDown() throws Exception {
+    	//System.out.print(out.toString(StandardCharsets.UTF_8));
+    	if (out != null) out.close();
+    }
+    
     @Test
-    public void testSimpleLoggerConstructorPrintStream() {
-        logger = new SimpleLogger(System.out);
+    public void testSimpleLoggerConstructor() {
+        logger = new SimpleLogger();
         logger.info("test");
         assertTrue(true);
     }

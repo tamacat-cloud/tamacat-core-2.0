@@ -4,7 +4,8 @@
  */
 package cloud.tamacat.util;
 
-import java.beans.IntrospectionException;
+//import java.beans.IntrospectionException;
+//import java.beans.PropertyDescriptor;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -259,19 +260,43 @@ public abstract class ClassUtils {
 	}
 
 	public static Method getSetterMethod(String propertyName, Class<?> target) {
-		try {
-			return new java.beans.PropertyDescriptor(propertyName, target).getWriteMethod();
-		} catch (IntrospectionException e) {
-			throw new ClassUtilsException(e);
+		Method[] methods = findMethods(target, getSetterMethodName(propertyName));
+		if (methods != null) {
+			if (methods.length == 1) {
+				return methods[0];
+			}
+			for (Method m : methods) {
+				if (m.getParameterCount() == 1) {
+					return m;
+				}
+			}
 		}
+		throw new ClassUtilsException("Can not find Setter method.");
+//		try {
+//			return new PropertyDescriptor(propertyName, target).getWriteMethod();
+//		} catch (IntrospectionException e) {
+//			throw new ClassUtilsException(e);
+//		}
 	}
 
 	public static Method getGetterMethod(String propertyName, Class<?> target) {
-		try {
-			return new java.beans.PropertyDescriptor(propertyName, target).getReadMethod();
-		} catch (IntrospectionException e) {
-			throw new ClassUtilsException(e);
+		Method[] methods = findMethods(target, getGetterMethodName(propertyName));
+		if (methods != null) {
+			if (methods.length == 1) {
+				return methods[0];
+			}
+			for (Method m : methods) {
+				if (m.getParameterCount() == 0) {
+					return m;
+				}
+			}
 		}
+		throw new ClassUtilsException("Can not find Getter method.");
+//		try {
+//			return new PropertyDescriptor(propertyName, target).getReadMethod();
+//		} catch (IntrospectionException e) {
+//			throw new ClassUtilsException(e);
+//		}
 	}
 
 	public static String getAdderMethodName(String propertyName) {

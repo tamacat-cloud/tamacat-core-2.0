@@ -220,8 +220,8 @@
           <includes>
             <include>**/*</include>
           </includes>
-          <repositoryName>tamacat.github.io</repositoryName>
-          <repositoryOwner>tamacat</repositoryOwner>
+          <repositoryName>tamacat-cloud.github.io</repositoryName>
+          <repositoryOwner>tamacat-cloud</repositoryOwner>
         </configuration>
         <executions>
           <execution>
@@ -266,7 +266,7 @@
   <repositories>
     <repository>
       <id>github</id>
-      <url>https://raw.github.com/tamacat/tamacat.github.io/mvn-repo/</url>
+      <url>https://raw.github.com/tamacat-cloud/tamacat-cloud.github.io/mvn-repo/</url>
     </repository>
   </repositories>
 </project>

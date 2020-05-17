@@ -16,7 +16,7 @@ public interface DIContainer {
 	 * @param id
 	 * @return return an instance
 	 */
-	public Object getBean(String id);
+	Object getBean(String id);
 
 	/**
 	 * Return an instance of the specified bean.
@@ -24,14 +24,14 @@ public interface DIContainer {
 	 * @param type class or interface
 	 * @return return an instance
 	 */
-	public <T>T getBean(String id, Class<T> type);
+	<T>T getBean(String id, Class<T> type);
 
 	/**
 	 * Return the instances in java.util.List.
 	 * @param type class or interface
 	 * @return instances in java.util.List
 	 */
-	public <T>List<T> getInstanceOfType(Class<T> type);
+	<T>List<T> getInstanceOfType(Class<T> type);
 
 	/**
 	 * Remove an instance of the specified bean.

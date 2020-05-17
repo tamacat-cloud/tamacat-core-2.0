@@ -13,7 +13,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import cloud.tamacat.log.impl.Log4jLogger;
 import cloud.tamacat.util.IOUtils;
 
 public class Log4jLoggerSerializeTest {
@@ -23,7 +22,7 @@ public class Log4jLoggerSerializeTest {
 		ObjectOutputStream out = null;
 		ObjectInputStream in = null;
 		try {
-			Log4jLogger logger = new Log4jLogger("TEST");
+			Log4j2Logger logger = new Log4j2Logger("TEST");
 			
 			//FileOutputStream os = new FileOutputStream("logger.ser");
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
@@ -39,9 +38,9 @@ public class Log4jLoggerSerializeTest {
 			in = new ObjectInputStream(is);
 			Object obj = in.readObject();
 			assertNotNull(obj);
-			assertEquals(Log4jLogger.class, obj.getClass());
+			assertEquals(Log4j2Logger.class, obj.getClass());
 			
-			logger = (Log4jLogger)obj;
+			logger = (Log4j2Logger)obj;
 			logger.debug("Deserialize OK.");
 		} catch (Exception e) {
 			e.printStackTrace();

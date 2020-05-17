@@ -6,15 +6,13 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import cloud.tamacat.log.impl.Log4jDiagnosticContext;
+public class Log4j2DiagnosticContextTest {
 
-public class Log4jDiagnosticContextTest {
-
-	Log4jDiagnosticContext context;
+	Log4j2DiagnosticContext context;
 	
 	@BeforeEach
 	public void setUp() throws Exception {		
-		context = new Log4jDiagnosticContext();
+		context = new Log4j2DiagnosticContext();
 	}
 
 	@AfterEach
@@ -24,7 +22,7 @@ public class Log4jDiagnosticContextTest {
 
 	@Test
 	public void testSetMappedContext() {
-		context = new Log4jDiagnosticContext();
+		context = new Log4j2DiagnosticContext();
 		context.setMappedContext("key1", "value1");
 		context.setMappedContext("key2", "value2");
 		//assertEquals(2, context.keySet().size());
@@ -34,7 +32,7 @@ public class Log4jDiagnosticContextTest {
 	public void testSetNestedContext() {
 		context.setNestedContext("value1");
 		context.setNestedContext("value2");
-		assertEquals("value2", context.get());
+		assertEquals("value2", context.peek());
 	}
 
 	@Test
@@ -42,7 +40,7 @@ public class Log4jDiagnosticContextTest {
 		context.setNestedContext("value1");
 		context.setNestedContext("value2");
 		context.remove();
-		assertEquals("", context.get());
+		assertEquals("", context.peek());
 	}
 
 	@Test

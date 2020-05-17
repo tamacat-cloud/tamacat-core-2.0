@@ -23,8 +23,7 @@ import org.junit.jupiter.api.Test;
 import cloud.tamacat.log.Log;
 import cloud.tamacat.log.LogFactory;
 import cloud.tamacat.log.impl.Log4j2Logger;
-import cloud.tamacat.log.impl.Log4jDiagnosticContext;
-import cloud.tamacat.log.impl.Log4jLogger;
+import cloud.tamacat.log.impl.Log4j2DiagnosticContext;
 import cloud.tamacat.log.impl.NoneDiagnosticContext;
 import cloud.tamacat.log.impl.Slf4jLogger;
 import cloud.tamacat.util.ClassUtils;
@@ -82,7 +81,7 @@ public class LogFactoryTest {
 
 	@Test
 	public void testGetDiagnosticContext() {
-		assertTrue(LogFactory.getDiagnosticContext(new Log4jLogger("test")) instanceof Log4jDiagnosticContext);
+		assertTrue(LogFactory.getDiagnosticContext(new Log4j2Logger("test")) instanceof Log4j2DiagnosticContext);
 		assertTrue(LogFactory.getDiagnosticContext(null) instanceof NoneDiagnosticContext);
 	}
 

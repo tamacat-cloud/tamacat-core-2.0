@@ -11,8 +11,6 @@ import java.util.Properties;
 import cloud.tamacat.log.impl.JDKLogger;
 import cloud.tamacat.log.impl.Log4j2DiagnosticContext;
 import cloud.tamacat.log.impl.Log4j2Logger;
-import cloud.tamacat.log.impl.Log4jDiagnosticContext;
-import cloud.tamacat.log.impl.Log4jLogger;
 import cloud.tamacat.log.impl.NoneDiagnosticContext;
 import cloud.tamacat.log.impl.SimpleLogger;
 import cloud.tamacat.log.impl.Slf4jDiagnosticContext;
@@ -30,7 +28,6 @@ public class LogFactory {
 
 	static final String LOGGING_PROPERTIES_FILE = "logging.properties";
 	static final String KEY = "cloud.tamacat.log.Log";
-	static final String LOG4J_CLASS = "org.apache.log4j.Logger";
 	static final String LOG4J2_CLASS = "org.apache.logging.log4j.Logger";
 	static final String SLF4J_CLASS = "org.slf4j.Logger";
 
@@ -82,10 +79,6 @@ public class LogFactory {
 		if (log4j2Class != null) {
 			return new Log4j2Logger(name);
 		}
-		Class<?> log4jClass = ClassUtils.forName(LOG4J_CLASS, loader);
-		if (log4jClass != null) {
-			return new Log4jLogger(name);
-		}
 		return new SimpleLogger();
 	}
 
@@ -94,8 +87,6 @@ public class LogFactory {
             return new Slf4jDiagnosticContext();
 		} else if (logger instanceof Log4j2Logger) {
 			return new Log4j2DiagnosticContext();
-		} else if (logger instanceof Log4jLogger) {
-			return new Log4jDiagnosticContext();
 		} else {
 			return new NoneDiagnosticContext();
 		}

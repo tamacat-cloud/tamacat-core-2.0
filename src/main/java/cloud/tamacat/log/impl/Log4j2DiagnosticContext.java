@@ -34,6 +34,10 @@ public class Log4j2DiagnosticContext implements DiagnosticContext {
 		ThreadContext.remove(key);
 	}
 
+	public String peek() {
+		return ThreadContext.peek();
+	}
+	
 	public String get(String key) {
 		return ThreadContext.get(key);
 	}

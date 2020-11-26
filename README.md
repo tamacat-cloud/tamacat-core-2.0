@@ -6,7 +6,6 @@ The configuration XML file can be described by the form like "Spring Framework".
 Logging
 ------------
 * SLF4J
-* Log4j2
 
 Utilities
 ------------

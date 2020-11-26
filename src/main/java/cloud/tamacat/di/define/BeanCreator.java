@@ -1,5 +1,7 @@
 /*
- * Copyright (c) 2007 tamacat.org
+ * Copyright 2007 tamacat.org
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0 
  */
 package cloud.tamacat.di.define;
 
@@ -9,10 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 import cloud.tamacat.di.DIContainerException;
-import cloud.tamacat.di.define.BeanConstructorParam;
-import cloud.tamacat.di.define.BeanDefine;
-import cloud.tamacat.di.define.BeanDefineMap;
-import cloud.tamacat.di.define.BeanDefineParam;
 import cloud.tamacat.util.ClassUtils;
 import cloud.tamacat.util.ClassUtilsException;
 import cloud.tamacat.util.StringUtils;

@@ -1,11 +1,10 @@
 /*
- * Copyright (c) 2007 tamacat.org
- * All rights reserved.
+ * Copyright 2007 tamacat.org
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  */
 package cloud.tamacat.util;
 
-//import java.beans.IntrospectionException;
-//import java.beans.PropertyDescriptor;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -272,11 +271,6 @@ public abstract class ClassUtils {
 			}
 		}
 		throw new ClassUtilsException("Can not find Setter method.");
-//		try {
-//			return new PropertyDescriptor(propertyName, target).getWriteMethod();
-//		} catch (IntrospectionException e) {
-//			throw new ClassUtilsException(e);
-//		}
 	}
 
 	public static Method getGetterMethod(String propertyName, Class<?> target) {
@@ -292,11 +286,6 @@ public abstract class ClassUtils {
 			}
 		}
 		throw new ClassUtilsException("Can not find Getter method.");
-//		try {
-//			return new PropertyDescriptor(propertyName, target).getReadMethod();
-//		} catch (IntrospectionException e) {
-//			throw new ClassUtilsException(e);
-//		}
 	}
 
 	public static String getAdderMethodName(String propertyName) {

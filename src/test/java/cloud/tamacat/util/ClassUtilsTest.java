@@ -1,5 +1,7 @@
 /*
- * Copyright (c) 2007 tamacat.org
+ * Copyright 2007 tamacat.org
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  */
 package cloud.tamacat.util;
 
@@ -17,8 +19,6 @@ import java.util.List;
 import cloud.tamacat.di.test.Core;
 import cloud.tamacat.di.test.CoreFactory;
 import cloud.tamacat.di.test.SampleCore;
-import cloud.tamacat.util.ClassUtils;
-import cloud.tamacat.util.ResourceNotFoundException;
 
 public class ClassUtilsTest {
 

@@ -1,5 +1,7 @@
 /*
- * Copyright (c) 2014 tamacat.org
+ * Copyright 2014 tamacat.org
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  */
 package cloud.tamacat.di.define.xml;
 
@@ -16,9 +18,6 @@ import java.nio.file.Paths;
 import javax.xml.bind.JAXB;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
-
-import cloud.tamacat.di.define.xml.Bean;
-import cloud.tamacat.di.define.xml.Beans;
 
 public class BeansTest {
 

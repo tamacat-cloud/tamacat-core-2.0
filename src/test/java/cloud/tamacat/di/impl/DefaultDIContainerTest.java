@@ -1,6 +1,7 @@
 /*
- * Copyright (c) 2007, tamacat.org
- * All rights reserved.
+ * Copyright 2007 tamacat.org
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  */
 package cloud.tamacat.di.impl;
 
@@ -14,7 +15,6 @@ import org.junit.jupiter.api.Test;
 import cloud.tamacat.di.DIContainerException;
 import cloud.tamacat.di.define.BeanDefine;
 import cloud.tamacat.di.define.BeanDefineMap;
-import cloud.tamacat.di.impl.DefaultDIContainer;
 import cloud.tamacat.di.test.Core;
 import cloud.tamacat.di.test.DBCore;
 import cloud.tamacat.di.test.Param;

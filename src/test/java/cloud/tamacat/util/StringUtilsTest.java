@@ -1,5 +1,7 @@
 /*
- * Copyright (c) 2008 tamacat.org
+ * Copyright 2008 tamacat.org
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0 
  */
 package cloud.tamacat.util;
 
@@ -11,8 +13,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Locale;
-
-import cloud.tamacat.util.StringUtils;
 
 public class StringUtilsTest {
 

@@ -1,6 +1,7 @@
 /*
- * Copyright (c) 2007 tamacat.org
- * All rights reserved.
+ * Copyright 2007 tamacat.org
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  */
 package cloud.tamacat.log;
 
@@ -9,8 +10,6 @@ import java.util.Map;
 import java.util.Properties;
 
 import cloud.tamacat.log.impl.JDKLogger;
-import cloud.tamacat.log.impl.Log4j2DiagnosticContext;
-import cloud.tamacat.log.impl.Log4j2Logger;
 import cloud.tamacat.log.impl.NoneDiagnosticContext;
 import cloud.tamacat.log.impl.SimpleLogger;
 import cloud.tamacat.log.impl.Slf4jDiagnosticContext;
@@ -28,7 +27,6 @@ public class LogFactory {
 
 	static final String LOGGING_PROPERTIES_FILE = "logging.properties";
 	static final String KEY = "cloud.tamacat.log.Log";
-	static final String LOG4J2_CLASS = "org.apache.logging.log4j.Logger";
 	static final String SLF4J_CLASS = "org.slf4j.Logger";
 
 	static LogFactory SELF = new LogFactory();
@@ -75,18 +73,12 @@ public class LogFactory {
 		if (slf4jClass != null) {
 			return new Slf4jLogger(name);
 		}
-		Class<?> log4j2Class = ClassUtils.forName(LOG4J2_CLASS, loader);
-		if (log4j2Class != null) {
-			return new Log4j2Logger(name);
-		}
 		return new SimpleLogger();
 	}
 
 	public static DiagnosticContext getDiagnosticContext(Log logger) {
 		if (logger instanceof Slf4jLogger) {
             return new Slf4jDiagnosticContext();
-		} else if (logger instanceof Log4j2Logger) {
-			return new Log4j2DiagnosticContext();
 		} else {
 			return new NoneDiagnosticContext();
 		}

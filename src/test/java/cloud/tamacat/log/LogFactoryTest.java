@@ -1,17 +1,7 @@
 /*
- * Copyright 2007 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2007 tamacat.org
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  */
 package cloud.tamacat.log;
 
@@ -20,11 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import cloud.tamacat.log.Log;
-import cloud.tamacat.log.LogFactory;
-import cloud.tamacat.log.impl.Log4j2Logger;
-import cloud.tamacat.log.impl.Log4j2DiagnosticContext;
 import cloud.tamacat.log.impl.NoneDiagnosticContext;
+import cloud.tamacat.log.impl.Slf4jDiagnosticContext;
 import cloud.tamacat.log.impl.Slf4jLogger;
 import cloud.tamacat.util.ClassUtils;
 
@@ -66,7 +53,6 @@ public class LogFactoryTest {
 
 	@Test
 	public void testLoadLogger() throws Exception {
-		assertFalse(LogFactory.SELF.loadLogger("test") instanceof Log4j2Logger);
 		assertTrue(LogFactory.SELF.loadLogger("test") instanceof Slf4jLogger);
 
 		Log l1 = LogFactory.SELF.loadLogger("test");
@@ -81,7 +67,7 @@ public class LogFactoryTest {
 
 	@Test
 	public void testGetDiagnosticContext() {
-		assertTrue(LogFactory.getDiagnosticContext(new Log4j2Logger("test")) instanceof Log4j2DiagnosticContext);
+		assertTrue(LogFactory.getDiagnosticContext(new Slf4jLogger("test")) instanceof Slf4jDiagnosticContext);
 		assertTrue(LogFactory.getDiagnosticContext(null) instanceof NoneDiagnosticContext);
 	}
 

@@ -1,3 +1,8 @@
+/*
+ * Copyright 2019 tamacat.org
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ */
 package cloud.tamacat.util;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,10 +13,6 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
-
-import cloud.tamacat.util.IOUtils;
-import cloud.tamacat.util.MessageDigestException;
-import cloud.tamacat.util.MessageDigestInputStream;
 
 public class MessageDigestInputStreamTest {
 
@@ -52,9 +53,9 @@ public class MessageDigestInputStreamTest {
 		ByteArrayInputStream bi = new ByteArrayInputStream("TEST".getBytes());
 		MessageDigestInputStream in = new MessageDigestInputStream(bi);
 		long result = in.skip(2);
-		assertSame(2L, result);
+		assertEquals(2L, result);
 
-		assertSame(0L, in.skip(-999));
+		assertEquals(0L, in.skip(-999));
 		IOUtils.close(in);
 	}
 

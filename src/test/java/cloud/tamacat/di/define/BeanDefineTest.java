@@ -1,5 +1,7 @@
 /*
- * Copyright (c) 2014 tamacat.org
+ * Copyright 2014 tamacat.org
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  */
 package cloud.tamacat.di.define;
 
@@ -9,9 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
 
-import cloud.tamacat.di.define.BeanConstructorParam;
-import cloud.tamacat.di.define.BeanDefine;
-import cloud.tamacat.di.define.BeanDefineParam;
 import cloud.tamacat.di.test.CoreFactory;
 import cloud.tamacat.di.test.Param;
 import cloud.tamacat.util.ClassUtils;

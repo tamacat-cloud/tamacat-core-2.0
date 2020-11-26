@@ -1,5 +1,7 @@
 /*
- * Copyright (c) 2009 tamacat.org
+ * Copyright 2009 tamacat.org
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  */
 package cloud.tamacat.di;
 
@@ -9,8 +11,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import cloud.tamacat.di.DI;
-import cloud.tamacat.di.DIContainer;
 import cloud.tamacat.di.define.BeanDefine;
 import cloud.tamacat.di.define.BeanDefineMap;
 import cloud.tamacat.di.test.Core;

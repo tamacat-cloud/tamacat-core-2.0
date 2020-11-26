@@ -20,7 +20,5 @@ module cloud.tamacat.core {
 	requires transitive java.json;
 	
 	requires transitive java.logging;
-	requires transitive org.apache.log4j;
-	requires transitive org.apache.logging.log4j;
 	requires transitive org.slf4j;
 }

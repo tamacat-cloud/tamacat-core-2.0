@@ -1,6 +1,7 @@
 /*
- * Copyright (c) 2007, tamacat.org
- * All rights reserved.
+ * Copyright 2007 tamacat.org
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  */
 package cloud.tamacat.util;
 
@@ -10,8 +11,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
-
-import cloud.tamacat.util.DateUtils;
 
 public class DateUtilsTest {
 

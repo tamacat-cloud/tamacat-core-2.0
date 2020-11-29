@@ -10,6 +10,7 @@ module cloud.tamacat.core {
 	exports cloud.tamacat.di.impl;
 	
 	opens cloud.tamacat.log.impl;
+	opens cloud.tamacat.di;
 	opens cloud.tamacat.di.define;
 	opens cloud.tamacat.di.define.xml;
 	opens cloud.tamacat.di.impl;
@@ -17,8 +18,9 @@ module cloud.tamacat.core {
 	//requires java.desktop;
 	requires java.xml;
 	requires java.xml.bind;
-	requires transitive java.json;
+	//requires transitive java.json;
 	
+	requires transitive com.google.gson;
 	requires transitive java.logging;
 	requires transitive org.slf4j;
 }

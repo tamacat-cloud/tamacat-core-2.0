@@ -4,16 +4,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class RateLimiterTest {
+public class RateLimiterTest {
 
 	@Test
-	void testCreate() {
+	public void testCreate() {
 		RateLimiter limiter = RateLimiter.create(3);
 		assertNotNull(limiter);
 	}
 
 	@Test
-	void testAddAndCheck() throws Exception {
+	public void testAddAndCheck() throws Exception {
 		RateLimiter limiter = RateLimiter.create(3);
 		limiter.addAndCheck("test", 500);
 		assertEquals(1, limiter.count("test"));
@@ -23,13 +23,13 @@ class RateLimiterTest {
 	}
 
 	@Test
-	void testCount() {
+	public void testCount() {
 		RateLimiter limiter = RateLimiter.create(3);
 		assertEquals(0, limiter.count("test"));
 	}
 
 	@Test
-	void testRemove() {
+	public void testRemove() {
 		RateLimiter limiter = RateLimiter.create(3);
 		limiter.remove("test");
 	}

@@ -20,7 +20,7 @@ import java.util.Set;
 /**
  * Utilities of Collection.
  */
-public class CollectionUtils {
+public abstract class CollectionUtils {
 	
 	public static <K, V> Map<K, V> convert(
 			final Map<K, V> map, final Collection<K> keys, final Collection<V> values) {

@@ -1,8 +1,8 @@
 Automatic-Module-Name: cloud.tamacat.core
 Implementation-Title: tamacat-core
-Implementation-Version: 2.0-20201127
+Implementation-Version: 2.0-20201129
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: cloud.tamacat.core
 Bundle-Name: tamacat-core
-Bundle-Vendor: tamacat.cloud
+Bundle-Vendor: TAMACAT.ORG
 Bundle-Version: 2.0

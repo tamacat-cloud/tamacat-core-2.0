@@ -175,10 +175,10 @@ public abstract class StringUtils {
 	 * Format JSON String
 	 * @sinse 1.4
 	 * @param json
-	 * @deprecated JsonUtils.stringify(json)
+	 * @deprecated JsonUtils.format(json)
 	 */
 	public static String formatJson(String json) {
-		return JsonUtils.stringify(json);
+		return JsonUtils.format(json);
 		/*
 		try {
 			ScriptEngine js = new ScriptEngineManager().getEngineByName("JavaScript");

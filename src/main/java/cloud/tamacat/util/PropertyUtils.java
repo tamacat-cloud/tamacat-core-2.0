@@ -42,7 +42,11 @@ public abstract class PropertyUtils {
 		} finally {
 			IOUtils.close(in);
 		}
-		return props;
+		if (disableResolveSystemProperty(props)) {
+			return props;
+		} else {
+			return SystemPropertyUtils.resolvePlaceholders(props);
+		}
 	}
 
 	/**
@@ -66,7 +70,11 @@ public abstract class PropertyUtils {
 		} finally {
 			IOUtils.close(in);
 		}
-		return props;
+		if (disableResolveSystemProperty(props)) {
+			return props;
+		} else {
+			return SystemPropertyUtils.resolvePlaceholders(props);
+		}
 	}
 
 	public static Properties marge(String defaultFile, String addFile) {
@@ -105,5 +113,17 @@ public abstract class PropertyUtils {
 			// none.
 		}
 		return props;
+	}
+	
+	/**
+	 * Disabled resolve System Property
+	 * ex) PropertyUtils.disableResolveSystemProperty=true
+	 */
+	static boolean disableResolveSystemProperty(Properties props) {
+		if (props != null && Boolean.parseBoolean(props.getProperty("PropertyUtils.disableResolveSystemProperty", "false"))) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

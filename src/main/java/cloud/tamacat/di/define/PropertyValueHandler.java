@@ -7,10 +7,10 @@ package cloud.tamacat.di.define;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
-import java.util.Map;
 
 import cloud.tamacat.util.ClassUtils;
 import cloud.tamacat.util.StringUtils;
+import cloud.tamacat.util.SystemPropertyUtils;
 
 public class PropertyValueHandler {
 
@@ -20,8 +20,6 @@ public class PropertyValueHandler {
 		CONVERTERS.put(type, converter);
 	}
 	
-	static final Map<String, String> ENVIRONMENT = new HashMap<>();
-
 	static {
 		register(String.class, new StringConverter());
 		register(String[].class, new StringArrayConverter());
@@ -37,7 +35,7 @@ public class PropertyValueHandler {
 	}
 
 	public static final void setEnv(String key, String value) {
-		ENVIRONMENT.put(key, value);
+		System.setProperty(key, value);
 	}
 	
 	static final class StringConverter implements StringValueConverter<String> {
@@ -202,14 +200,26 @@ public class PropertyValueHandler {
 	 * @param value
 	 * @since 1.4-20180510
 	 */
-	static String replaceEnvironmentVariable(String value) {
+	public static String replaceEnvironmentVariable(String value) {
+		return SystemPropertyUtils.resolvePlaceholders(value, true);
+	}
+	
+	/**
+	 * @deprecated
+	 * @see SystemPropertyUtils.resolvePlaceholders(String)
+	 * 
+	 * Replace a environment variable from setter injection value.
+	 * ex. ${USER_HOME} -> /home/testuser
+	 * @param value
+	 */
+	public static String replaceEnvVariable(String value) {
 		if (StringUtils.isNotEmpty(value) && value.startsWith("${") && value.endsWith("}")) {
 			String key = value.substring(2, value.length()-1);
 			String env = System.getenv(key);
 			if (env != null) {
 				return env;
 			} else {
-				return ENVIRONMENT.get(key);
+				return System.getProperty(key);
 			}
 		}
 		return value;

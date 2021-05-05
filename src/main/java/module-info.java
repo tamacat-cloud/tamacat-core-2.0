@@ -14,7 +14,8 @@ module cloud.tamacat.core {
 	opens cloud.tamacat.di.define;
 	opens cloud.tamacat.di.define.xml;
 	opens cloud.tamacat.di.impl;
-
+	opens cloud.tamacat.util;
+	
 	//requires java.desktop;
 	requires java.xml;
 	requires java.xml.bind;

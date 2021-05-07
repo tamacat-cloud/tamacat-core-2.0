@@ -69,6 +69,7 @@ public class EncryptionUtilsTest {
 
 		ByteArrayOutputStream out = output(in);
 		assertNotEquals(data, out.toByteArray());
+		//System.out.println(out.toByteArray().length + ", "+ EncryptionUtils.getEncryptedLength(len));
 		assertEquals(EncryptionUtils.getEncryptedLength(len), out.toByteArray().length);
 
 		ByteArrayOutputStream out2 = output(EncryptionUtils.decrypt(key, new ByteArrayInputStream(out.toByteArray())));

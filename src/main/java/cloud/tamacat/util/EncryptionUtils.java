@@ -21,7 +21,7 @@ import javax.crypto.Mac;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
@@ -33,10 +33,16 @@ public class EncryptionUtils {
 
 	static final Log LOG = LogFactory.getLog(EncryptionUtils.class);
 	
-	static final String AES_ALGORITHM = "AES/CBC/PKCS5Padding";
-	static final String SHA1_ALGORITHM = "PBKDF2WithHmacSHA1";
-	static final String SHA256_ALGORITHM = "PBKDF2WithHmacSHA256";
+	//static final String AES_ALGORITHM = "AES/CBC/PKCS5Padding"; //weak
+    static final String AES_ALGORITHM = "AES/GCM/NoPadding";
 
+	//static final String SHA1_ALGORITHM = "PBKDF2WithHmacSHA1";
+	static final String SHA256_ALGORITHM = "PBKDF2WithHmacSHA256";
+	static final String SHA512_ALGORITHM = "PBKDF2WithHmacSHA512";
+	
+    static final int TAG_LENGTH_BIT = 128;
+    static final int IV_LENGTH_BYTE = 12;
+    
 	/**
 	 * Get a message digest.
 	 * @param value
@@ -73,31 +79,34 @@ public class EncryptionUtils {
 	}
 	
 	public static byte[] encrypt(SecretKey secretKey, byte[] bytes) {
-		byte[] iv = EMPTY_IV_GENERATOR.generateKey();
+		byte[] iv = IV_GENERATOR.generateKey();
 		Cipher encryptor = getCipher(AES_ALGORITHM);
-		initCipher(encryptor, Cipher.ENCRYPT_MODE, secretKey, new IvParameterSpec(iv));
+		initCipher(encryptor, Cipher.ENCRYPT_MODE, secretKey, getParameterSpec(iv));
 		byte[] encrypted = doFinal(encryptor, bytes);
 		return concatenate(iv, encrypted);
 	}
 
 	public static byte[] decrypt(SecretKey secretKey, byte[] encryptedBytes) {
-		byte[] iv = iv(encryptedBytes);
+	    if (encryptedBytes.length < 12 + 16) throw new IllegalArgumentException();
+
+	    GCMParameterSpec params = new GCMParameterSpec(TAG_LENGTH_BIT, encryptedBytes, 0, IV_LENGTH_BYTE);
 		Cipher decryptor = getCipher(AES_ALGORITHM);
-		initCipher(decryptor, Cipher.DECRYPT_MODE, secretKey, new IvParameterSpec(iv));
-		return doFinal(decryptor, encrypted(encryptedBytes, iv.length));
+		initCipher(decryptor, Cipher.DECRYPT_MODE, secretKey, params);
+		return doFinal(decryptor, encrypted(encryptedBytes, decryptor.getIV().length));
 	}
 
 	public static CipherInputStream encrypt(SecretKey secretKey, InputStream in) {
-		byte[] iv = EMPTY_IV_GENERATOR.generateKey();
+		byte[] iv = IV_GENERATOR.generateKey();
 		Cipher encryptor = getCipher(AES_ALGORITHM);
-		initCipher(encryptor, Cipher.ENCRYPT_MODE, secretKey, new IvParameterSpec(iv));
+		initCipher(encryptor, Cipher.ENCRYPT_MODE, secretKey, getParameterSpec(iv));
 		return new CipherInputStream(in, encryptor);
 	}
 
 	public static CipherInputStream decrypt(SecretKey secretKey, InputStream in) {
-		byte[] iv = EMPTY_IV_GENERATOR.generateKey();
 		Cipher decryptor = getCipher(AES_ALGORITHM);
-		initCipher(decryptor, Cipher.DECRYPT_MODE, secretKey, new IvParameterSpec(iv));
+		
+		byte[] iv = IV_GENERATOR.generateKey();
+		initCipher(decryptor, Cipher.DECRYPT_MODE, secretKey, getParameterSpec(iv));
 		return new CipherInputStream(in, decryptor);
 	}
 
@@ -108,7 +117,8 @@ public class EncryptionUtils {
 	}
 
 	public static long getEncryptedLength(long len) {
-		return len + (16 - (len % 16));
+		//return len + (16 - (len % 16));
+		return len + 16;
 	}
 
 	public static SecretKey generateSecret(String algorithm, PBEKeySpec keySpec) {
@@ -156,8 +166,12 @@ public class EncryptionUtils {
 		}
 	}
 
+	static AlgorithmParameterSpec getParameterSpec(byte[] iv) {
+		return new GCMParameterSpec(TAG_LENGTH_BIT, iv);
+	}
+	
 	static byte[] iv(byte[] encrypted) {
-		return subArray(encrypted, 0, EMPTY_IV_GENERATOR.getKeyLength());
+		return subArray(encrypted, 0, IV_GENERATOR.getKeyLength());
 	}
 
 	static byte[] encrypted(byte[] encryptedBytes, int ivLength) {
@@ -190,15 +204,16 @@ public class EncryptionUtils {
 		byte[] generateKey();
 	}
 	
-	static final BytesKeyGenerator EMPTY_IV_GENERATOR = new BytesKeyGenerator() {
-		private final byte[] VALUE = new byte[16];
-
+	static final BytesKeyGenerator IV_GENERATOR = new BytesKeyGenerator() {
+		final byte[] iv = new byte[IV_LENGTH_BYTE];
+		
 		public int getKeyLength() {
-			return VALUE.length;
+			return IV_LENGTH_BYTE;
 		}
 
 		public byte[] generateKey() {
-			return VALUE;
+            //(new SecureRandom()).nextBytes(iv);
+			return iv;
 		}
 	};
 }

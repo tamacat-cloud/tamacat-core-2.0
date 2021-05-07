@@ -12,14 +12,19 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * FilterInputStream for MessageDigest. 
+ * default algorithm: SHA-256
+ */
 public class MessageDigestInputStream extends FilterInputStream {
 
+	private String algorithm = "SHA-256";
 	private MessageDigest digest;
 
 	public MessageDigestInputStream(InputStream in) {
 		super(in);
 		try {
-			digest = MessageDigest.getInstance("MD5");
+			digest = MessageDigest.getInstance(algorithm);
 		} catch (NoSuchAlgorithmException e) {
 			throw new MessageDigestException(e);
 		}
@@ -34,6 +39,20 @@ public class MessageDigestInputStream extends FilterInputStream {
 		}
 	}
 	
+	/**
+	 * Set the Message Digest Algorithm.
+	 * default: SHA-256
+	 * @param algorithm
+	 */
+	public void setAlgorithm(String algorithm) {
+		this.algorithm = algorithm;
+	}
+	
+	/**
+	 * Set the Instance of MessageDigest.
+	 * ex) MessageDigest.getInstance("SHA-512")
+	 * @param digest
+	 */
 	public void setMessageDigest(MessageDigest digest) {
 		this.digest = digest;
 	}

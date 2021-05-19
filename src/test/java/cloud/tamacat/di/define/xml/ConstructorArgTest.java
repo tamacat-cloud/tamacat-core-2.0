@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.StringWriter;
 
-import javax.xml.bind.JAXB;
+import jakarta.xml.bind.JAXB;
 
 public class ConstructorArgTest {
 

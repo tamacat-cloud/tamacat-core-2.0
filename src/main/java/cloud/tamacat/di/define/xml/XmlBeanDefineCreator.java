@@ -5,7 +5,7 @@
  */
 package cloud.tamacat.di.define.xml;
 
-import javax.xml.bind.JAXB;
+import jakarta.xml.bind.JAXB;
 
 import cloud.tamacat.di.define.BeanConstructorParam;
 import cloud.tamacat.di.define.BeanDefine;

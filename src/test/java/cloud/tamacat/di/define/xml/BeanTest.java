@@ -15,7 +15,7 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.JAXB;
+import jakarta.xml.bind.JAXB;
 
 public class BeanTest {
 

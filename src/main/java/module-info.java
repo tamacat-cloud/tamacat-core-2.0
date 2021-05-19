@@ -18,7 +18,8 @@ module cloud.tamacat.core {
 	
 	//requires java.desktop;
 	requires java.xml;
-	requires java.xml.bind;
+	//requires java.xml.bind;
+	requires jakarta.xml.bind;
 	//requires transitive java.json;
 	
 	requires transitive com.google.gson;

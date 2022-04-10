@@ -18,9 +18,13 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 public class JsonUtils {
+
+	public static <T>T fromJsonInFileOrClasspathInputStream(String file, Class<T> type) {
+		return fromJson(IOUtils.getFileOrClasspathInputStream(file, ClassUtils.getDefaultClassLoader()), type);
+	}
 	
 	public static <T>T fromJsonInClasspath(String file, Class<T> type) {
-		return fromJson(IOUtils.getFileOrClasspathInputStream(file, ClassUtils.getDefaultClassLoader()), type);
+		return fromJson(IOUtils.getInputStream(file), type);
 	}
 	
 	public static <T>T fromJson(InputStream in, Class<T> type) {

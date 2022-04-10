@@ -6,6 +6,7 @@
 package cloud.tamacat.util;
 
 import java.io.Closeable;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -20,10 +21,25 @@ import java.net.URL;
 public class IOUtils {
 
 	/**
+	 * Get the InputStream from Resource in FileInputStream or CLASSPATH.
+	 * 1. FileInputStream, 2. CLASSPATH
+	 * @param path
+	 * @return InputStream
+	 */
+	public static InputStream getFileOrClasspathInputStream(String path, ClassLoader loader) {
+		try {
+			return new FileInputStream(path);
+		} catch (IOException e) {
+			//ignore
+		}
+		return getInputStream(path, loader);
+	}
+	
+	/**
 	 * Get the InputStream from Resource in CLASSPATH.
 	 * 
 	 * @param path
-	 * @return
+	 * @return InputStream
 	 */
 	public static InputStream getInputStream(String path) {
 		return getInputStream(path, ClassUtils.getDefaultClassLoader());
@@ -55,7 +71,7 @@ public class IOUtils {
 	 * separator)
 	 * 
 	 * @param path
-	 * @return
+	 * @return InputStream
 	 */
 	public static String getClassPathToResourcePath(String path) {
 		if (path == null || path.indexOf('/') >= 0)
@@ -75,7 +91,7 @@ public class IOUtils {
 	 * 
 	 * @param target
 	 */
-	static public void close(Object target) {
+	public static void close(Object target) {
 		if (target != null) {
 			if (target instanceof Closeable) {
 				close((Closeable) target);
@@ -100,7 +116,7 @@ public class IOUtils {
 	 * 
 	 * @param AutoCloseable
 	 */
-	static public void close(AutoCloseable closeable) {
+	public static void close(AutoCloseable closeable) {
 		try {
 			if (closeable != null) {
 				closeable.close();
@@ -117,7 +133,7 @@ public class IOUtils {
 	 * 
 	 * @param socket
 	 */
-	static public void close(Socket socket) {
+	public static void close(Socket socket) {
 		try {
 			if (socket != null) {
 				socket.close();

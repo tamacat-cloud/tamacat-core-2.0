@@ -20,7 +20,7 @@ import com.google.gson.JsonObject;
 public class JsonUtils {
 	
 	public static <T>T fromJsonInClasspath(String file, Class<T> type) {
-		return fromJson(IOUtils.getInputStream(file), type);
+		return fromJson(IOUtils.getFileOrClasspathInputStream(file, ClassUtils.getDefaultClassLoader()), type);
 	}
 	
 	public static <T>T fromJson(InputStream in, Class<T> type) {

@@ -16,12 +16,7 @@ module cloud.tamacat.core {
 	opens cloud.tamacat.di.impl;
 	opens cloud.tamacat.util;
 	
-	//requires java.desktop;
-	requires java.xml;
-	//requires java.xml.bind;
-	requires jakarta.xml.bind;
-	//requires transitive java.json;
-	
+	requires transitive jakarta.xml.bind;
 	requires transitive com.google.gson;
 	requires transitive java.logging;
 	requires transitive org.slf4j;

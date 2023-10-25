@@ -12,8 +12,8 @@ public class JsonArrayBuilder {
 	
 	JsonArray json;
 	
-	public static JsonObjectBuilder create() {
-		return new JsonObjectBuilder();
+	public static JsonArrayBuilder create() {
+		return new JsonArrayBuilder();
 	}
 	
 	public JsonArrayBuilder() {

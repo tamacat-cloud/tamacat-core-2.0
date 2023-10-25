@@ -111,7 +111,7 @@ public class IOUtils {
 	}
 
 	/**
-	 * When an Exception occurs, RuntimeIOException will be given up if it is
+	 * When an exception occurs, RuntimeIOException will be given up if it is
 	 * OutputStream or Writer.
 	 * 
 	 * @param AutoCloseable
@@ -128,6 +128,23 @@ public class IOUtils {
 		}
 	}
 
+	/**
+	 * When an exception occurs then throws RuntimeException.
+	 * @param closeable
+	 * @param cause If the cause is null, no exception is thrown.
+	 */
+	public static void close(AutoCloseable closeable, RuntimeException cause) {
+		try {
+			if (closeable != null) {
+				closeable.close();
+			}
+		} catch (Exception e) {
+			if (cause != null) {
+				throw cause;
+			}
+		}
+	}
+	
 	/**
 	 * It ignores, even if an exception occurs.
 	 * 

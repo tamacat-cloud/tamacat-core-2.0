@@ -1,4 +1,5 @@
-module cloud.tamacat.core {
+open module tamacat.core {
+	
 	exports cloud.tamacat.util;
 	exports cloud.tamacat;
 	exports cloud.tamacat.log;
@@ -8,13 +9,6 @@ module cloud.tamacat.core {
 	exports cloud.tamacat.log.impl;
 	exports cloud.tamacat.di.define.xml;
 	exports cloud.tamacat.di.impl;
-	
-	opens cloud.tamacat.log.impl;
-	opens cloud.tamacat.di;
-	opens cloud.tamacat.di.define;
-	opens cloud.tamacat.di.define.xml;
-	opens cloud.tamacat.di.impl;
-	opens cloud.tamacat.util;
 	
 	requires transitive jakarta.xml.bind;
 	requires transitive com.google.gson;

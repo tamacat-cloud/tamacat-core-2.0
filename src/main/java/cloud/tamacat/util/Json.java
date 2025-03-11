@@ -22,7 +22,7 @@ public class Json {
 		return new JsonArrayBuilder();
 	}
 	
-	public JsonObject readObject(Reader reader) {
+	public static JsonObject readObject(Reader reader) {
 		return JsonParser.parseReader(reader).getAsJsonObject();
 	}
 	
